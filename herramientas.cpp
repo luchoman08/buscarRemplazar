@@ -27,7 +27,10 @@ void herramientas::inicializarDatosSinCedula(string nombreArchivo){
         
 		datosSinCedula>>tmpCodigo;
 		
+		if(tmpCodigo!=""){
 		estructuraSinCedulas.push_back(make_pair(tmpCodigo, tmpCedula)); 
+		}
+		
 	  }
 	  datosSinCedula.close();
 
@@ -68,10 +71,13 @@ void herramientas::rellenarCedulas(){
     
     [codigo](const pair<string,string> & m) -> bool { return m.first == codigo ; }
     
-    );
-    if(*it != estructuraSinCedulas.back())
+    );  
+    
+	if(it!=estructuraCedulas.end())
     i->second = it->second;
+
     }
+    
    
     
 }
